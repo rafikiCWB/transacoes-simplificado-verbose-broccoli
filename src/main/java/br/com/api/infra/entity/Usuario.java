@@ -8,20 +8,37 @@ public class Usuario {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long idUsuario;
+  private Long id;
 
   private String nomeCompleto;
   @Column(unique = true, nullable = false)
   private String email;
   @Column(unique = true, nullable = false)
   private String cpfCnpj;
+  private String senha;
+  @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+  private Carteira carteira;
+  private TipoUsuario tipoUsuario;
 
-  public Long getIdUsuario() {
-    return idUsuario;
+  public Usuario() {
   }
 
-  public void setIdUsuario(Long id) {
-    this.idUsuario = id;
+  public Usuario(Long id, String nomeCompleto, String email, String cpfCnpj, String senha, Carteira carteira, TipoUsuario tipoUsuario) {
+    this.id = id;
+    this.nomeCompleto = nomeCompleto;
+    this.email = email;
+    this.cpfCnpj = cpfCnpj;
+    this.senha = senha;
+    this.carteira = carteira;
+    this.tipoUsuario = tipoUsuario;
+  }
+
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
   }
 
   public String getNomeCompleto() {
@@ -47,4 +64,5 @@ public class Usuario {
   public void setCpfCnpj(String cpfCnpj) {
     this.cpfCnpj = cpfCnpj;
   }
+
 }

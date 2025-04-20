@@ -8,7 +8,7 @@ public class Usuario {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+  private Long idUsuario;
 
   private String nomeCompleto;
   @Column(unique = true, nullable = false)
@@ -16,12 +16,12 @@ public class Usuario {
   @Column(unique = true, nullable = false)
   private String cpfCnpj;
 
-  public Long getId() {
-    return id;
+  public Long getIdUsuario() {
+    return idUsuario;
   }
 
-  public void setId(Long id) {
-    this.id = id;
+  public void setIdUsuario(Long id) {
+    this.idUsuario = id;
   }
 
   public String getNomeCompleto() {

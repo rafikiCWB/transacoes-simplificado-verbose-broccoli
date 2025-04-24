@@ -65,4 +65,28 @@ public class Usuario {
     this.cpfCnpj = cpfCnpj;
   }
 
+
+  public String getSenha() {
+    return senha;
+  }
+
+  public void setSenha(String senha) {
+    this.senha = senha;
+  }
+
+  public Carteira getCarteira() {
+    return carteira;
+  }
+
+  public void setCarteira(Carteira carteira) {
+    this.carteira = carteira;
+  }
+
+  public TipoUsuario getTipoUsuario() {
+    return tipoUsuario;
+  }
+
+  public void setTipoUsuario(TipoUsuario tipoUsuario) {
+    this.tipoUsuario = tipoUsuario;
+  }
 }

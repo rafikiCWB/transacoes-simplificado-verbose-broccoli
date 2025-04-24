@@ -1,12 +1,14 @@
 package br.com.api.infra.entity;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity(name = "transacao")
 @Table(name = "tbl_transacoes")
+@Builder
 public class Transacoes {
 
   @Id

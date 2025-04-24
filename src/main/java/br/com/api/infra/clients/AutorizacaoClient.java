@@ -8,4 +8,5 @@ public interface AutorizacaoClient {
 
   @GetMapping
   AutorizacaoDTO validarAutorizacao();
+
 }

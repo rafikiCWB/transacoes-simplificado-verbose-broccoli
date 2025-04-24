@@ -6,78 +6,32 @@ import lombok.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity(name = "transacao")
-@Table(name = "tbl_transacoes")
+@Table
 @Builder
 public class Transacoes {
-
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
   private BigDecimal valor;
 
-  @ManyToOne
   @JoinColumn(name = "recebedor_id")
-  private Usuario recebedor;
   @ManyToOne
+  private Usuario recebedor;
+
   @JoinColumn(name = "pagador_id")
+  @ManyToOne
   private Usuario pagador;
   private LocalDateTime dataHoraTransacao;
 
+
   @PrePersist
-  void prePersist() {
+  void prePersist(){
     dataHoraTransacao = LocalDateTime.now();
-  }
-
-  public Transacoes() {
-  }
-
-  public Transacoes(Long id, BigDecimal valor, Usuario recebedor, Usuario pagador, LocalDateTime dataHoraTransacao) {
-    this.id = id;
-    this.valor = valor;
-    this.recebedor = recebedor;
-    this.pagador = pagador;
-    this.dataHoraTransacao = dataHoraTransacao;
-  }
-
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public BigDecimal getValor() {
-    return valor;
-  }
-
-  public void setValor(BigDecimal valor) {
-    this.valor = valor;
-  }
-
-  public Usuario getRecebedor() {
-    return recebedor;
-  }
-
-  public void setRecebedor(Usuario recebedor) {
-    this.recebedor = recebedor;
-  }
-
-  public Usuario getPagador() {
-    return pagador;
-  }
-
-  public void setPagador(Usuario pagador) {
-    this.pagador = pagador;
-  }
-
-  public LocalDateTime getDataHoraTransacao() {
-    return dataHoraTransacao;
-  }
-
-  public void setDataHoraTransacao(LocalDateTime dataHoraTransacao) {
-    this.dataHoraTransacao = dataHoraTransacao;
   }
 }

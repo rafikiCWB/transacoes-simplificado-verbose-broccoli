@@ -8,9 +8,10 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class NotificacaoService {
 
-  private NotificacaoClient client;
+  private final NotificacaoClient client;
 
-  public void enviarNotificacao() {
+  public void enviarNotificacao(){
     client.enviarNotificacao();
   }
 }
+

@@ -31,7 +31,7 @@ public class TransacaoService {
 
     validaPagadorLojista(pagador);
     validarSaldoUsuario(pagador, transacaoDTO.value());
-    validarTranferencia();
+    validarTransferencia();
 
     pagador.getCarteira().setSaldo(pagador.getCarteira().getSaldo().subtract(transacaoDTO.value()));
     atualizarSaldoCarteira(pagador.getCarteira());
@@ -46,15 +46,14 @@ public class TransacaoService {
 
     repository.save(transacoes);
     enviarNotificacao();
-
   }
 
-  private void validaPagadorLojista(Usuario tipoPagador) {
+  private void validaPagadorLojista(Usuario usuario) {
     try {
-      if (tipoPagador.getTipoUsuario().equals(TipoUsuario.LOJISTA)) {
-        throw new IllegalArgumentException("Transação não permitida para lojista!");
+      if (usuario.getTipoUsuario().equals(TipoUsuario.LOJISTA)) {
+        throw new IllegalArgumentException("Transação não autorizada para esse tipo de usuario");
       }
-    } catch (IllegalArgumentException e) {
+    } catch (Exception e) {
       throw new IllegalArgumentException(e.getMessage());
     }
   }
@@ -69,7 +68,7 @@ public class TransacaoService {
     }
   }
 
-  private void validarTranferencia() {
+  private void validarTransferencia() {
     try {
       if (!autorizacaoService.validarTransferencia()) {
         throw new IllegalArgumentException("Transação não autorizada pela api");
@@ -87,7 +86,7 @@ public class TransacaoService {
     try {
       notificacaoService.enviarNotificacao();
     } catch (HttpClientErrorException e) {
-      new BadRequestException("Erro ao enviar notificacao");
+      throw new BadRequestException("Erro ao enviar notificacao");
     }
   }
 

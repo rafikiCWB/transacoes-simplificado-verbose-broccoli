@@ -3,23 +3,18 @@ package br.com.api.services;
 import br.com.api.exceptions.UserNotFound;
 import br.com.api.infra.entity.Usuario;
 import br.com.api.infra.repository.UsuarioRepository;
-import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
-@NoArgsConstructor
+@RequiredArgsConstructor
 public class UsuarioService {
 
-  private UsuarioRepository repository;
+  private final UsuarioRepository repository;
 
-  @Autowired
-  public UsuarioService(UsuarioRepository repository) {
-    this.repository = repository;
+  public Usuario buscarUsuario(Long id){
+    return repository.findById(id)
+        .orElseThrow(() ->
+            new UserNotFound("Usuário não encontrado"));
   }
-
-  public Usuario buscarUsuario(Long id) {
-  return repository.findById(id).orElseThrow(() -> new UserNotFound("Usuário não encontrado"));
-  }
-
 }

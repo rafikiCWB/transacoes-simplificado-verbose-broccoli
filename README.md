@@ -1,3 +1,8 @@
+API não funciona, erro 401 unauthorized ao fazer requisição POST
+Não consegui resolver, to extressado se alguem ver e achar o erro me avisa
+
+consegui arrumar, era a dependência do Spring security que estava impedido o acesso.
+
 <h1>Transação simplificado
 </h1>
 

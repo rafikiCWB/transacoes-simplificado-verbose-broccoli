@@ -1,7 +1,32 @@
-API não funciona, erro 401 unauthorized ao fazer requisição POST
-Não consegui resolver, to extressado se alguem ver e achar o erro me avisa
+Como rodar a aplicação?
 
-consegui arrumar, era a dependência do Spring security que estava impedido o acesso.
+No postman crie o endpoint 
+
+POST
+
+http://localhost:8080/transfer
+
+corpo Json
+
+<pre lang="json">
+{
+    "value": 100.00,
+    "payer": 1,
+    "payee": 2
+}
+</pre>
+Lembre-se que o usuário 1 e 2 são tipo COMUM então eles podem fazer e receber transações.
+
+O usuário 3 é tipo LOJISTA então só pode receber.
+
+comandos sql para usar na base de dados
+<pre lang="SQL">
+  SELECT * FROM usuario;
+  SELECT * FROM transacao;
+  SELECT * FROM carteira;;
+</pre>
+
+401 unauthorized -> Essa exeção acontece quando você tem a dependência Spring Security no projeto e não configurou.
 
 <h1>Transação simplificado
 </h1>
@@ -19,13 +44,13 @@ SpringWeb - Construção web, incluindo RESTfull, aplicação usando Spring MVC.
 
 SpringDevTools - Para live reload
 
-lombok - para código boilerplate
+Lombok - para código boilerplate
 
-Openfeign - Não sei ainda exatamente como explica isso
+Openfeign - Biblioteca para comunicação entre microserviços
 
 Spring cloud Security -> para o encriptamento dos seus dados
 
-SpringValidation -> para validação da sua api, como campos unicos, validos nulos e não nulos... etc.
+SpringValidation -> para validação da api, como campos unicos, validos nulos e não nulos... etc.
 
 IDEA-Intellij -> Ambiente de desesnvolvimento integrado para codificação do desenvolvedor
 

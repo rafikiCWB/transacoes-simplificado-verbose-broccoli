@@ -59,3 +59,7 @@ SGBD-pgadmin -> Sistema de gerenciamento de banco de dados.
 Gerenciador de dependências- Gradle
 
 JAX-RX ou Java API for RESTful Web Services. Essa API permite que os desenvolvedores construam aplicações que se comunicam através do protocolo HTTP, utilizando os princípios REST (Representational State Transfer);
+
+<h3>Documentação</h3>
+
+- [BFF - Backend for Frontend](docs/BFF.md) - Resumo sobre o padrão de arquitetura BFF
